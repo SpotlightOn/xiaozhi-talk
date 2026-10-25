@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xiaozhi-talk"
+version = "0.1.0"
+description = "Desktop chat client for Xiaozhi servers, built with PySide6 and xiaozhi-sdk"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "xiaozhi-talk contributors" }]
+dependencies = [
+    "PySide6>=6.6",
+    "xiaozhi-sdk>=0.5.1",
+    "cryptography>=41",
+]
+
+[project.optional-dependencies]
+# Enables the operating system keyring as credential storage.
+keyring = ["keyring>=24", "secretstorage>=3.3"]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[project.scripts]
+xiaozhi-talk = "xiaozhi_talk.app:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]

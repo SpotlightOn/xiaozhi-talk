@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Xiaozhi Talk
+GenericName=Voice chat client
+Comment=Chat with a Xiaozhi server using the keyboard or a headset
+Exec=@EXEC@
+Icon=@ICON@
+Terminal=false
+Categories=Network;Chat;InstantMessaging;
+Keywords=xiaozhi;chat;voice;assistant;microphone;
+StartupNotify=true
+StartupWMClass=xiaozhi-talk
