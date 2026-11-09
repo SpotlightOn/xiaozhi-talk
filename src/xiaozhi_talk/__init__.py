@@ -8,4 +8,4 @@ use_english_qt_strings()
 # The compatibility shim must run before any module imports ``xiaozhi_sdk``.
 from . import _compat  # noqa: F401, E402
 
-__version__ = "0.1.0"
+__version__ = "1.0.0"
