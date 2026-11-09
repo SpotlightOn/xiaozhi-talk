@@ -1,4 +1,21 @@
-# Xiaozhi Talk
+<p align="center">
+  <img src="https://raw.githubusercontent.com/SpotlightOn/xiaozhi-talk/main/assets/xiaozhi-talk.svg" width="112" alt="Xiaozhi Talk icon">
+</p>
+
+<h1 align="center">Xiaozhi Talk</h1>
+
+<p align="center">
+  <a href="https://github.com/SpotlightOn/xiaozhi-talk/actions/workflows/ci.yml"><img src="https://github.com/SpotlightOn/xiaozhi-talk/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://codecov.io/gh/SpotlightOn/xiaozhi-talk"><img src="https://codecov.io/gh/SpotlightOn/xiaozhi-talk/graph/badge.svg" alt="Coverage"></a>
+  <a href="https://pypi.org/project/xiaozhi-talk/"><img src="https://img.shields.io/pypi/v/xiaozhi-talk?style=flat" alt="PyPI"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white" alt="Python: 3.10+"></a>
+  <a href="https://doc.qt.io/qtforpython-6/"><img src="https://img.shields.io/badge/Qt_for_Python-PySide6-41cd52" alt="Qt for Python"></a>
+  <a href="https://socket.dev/pypi/package/xiaozhi-talk"><img src="https://socket.dev/api/badge/pypi/package/xiaozhi-talk" alt="Socket: supply-chain score"></a>
+  <a href="https://github.com/SpotlightOn/xiaozhi-talk/releases"><img src="https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black" alt="Linux"></a>
+  <a href="https://github.com/SpotlightOn/xiaozhi-talk/releases"><img src="https://img.shields.io/badge/macOS-000000?logo=apple&logoColor=white" alt="macOS"></a>
+  <a href="https://github.com/SpotlightOn/xiaozhi-talk/releases"><img src="https://img.shields.io/badge/Windows-0078D6" alt="Windows"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/SpotlightOn/xiaozhi-talk" alt="License: MIT"></a>
+</p>
 
 A desktop chat client for [Xiaozhi](https://xiaozhi.me) servers, built with PySide6.
 It talks to a Xiaozhi server the same way a Xiaozhi device does, using the
@@ -55,24 +72,22 @@ first use and starts the application:
 ./install.sh
 ```
 
-It creates a menu entry (`~/.local/share/applications/xiaozhi-talk.desktop`), the
-icon in the hicolor theme and a launcher in `~/.local/bin/xiaozhi-talk`, and
-prepares the virtual environment on first use. The checkout stays where it is,
-so updating it is enough to update the app. Remove the entry again with:
+It creates a virtual environment in `~/.local/share/xiaozhi-talk/venv`, installs
+a copy of the package there, and adds a menu entry
+(`~/.local/share/applications/xiaozhi-talk.desktop`), the icon in the hicolor
+theme and a launcher in `~/.local/bin/xiaozhi-talk`. Nothing in your home
+directory points back at this checkout, so it can be moved or deleted afterwards.
+Run the script again to update the installation, or remove all of it with:
 
 ```bash
 ./install.sh --uninstall
 ```
 
-To install it by hand:
+For a setup that runs straight from the checkout instead, see
+[Development](#development).
 
-```bash
-python3 -m venv .venv
-.venv/bin/pip install -e ".[keyring]"
-.venv/bin/xiaozhi-talk
-```
-
-During development `.[dev]` additionally installs `pytest` and `ruff`.
+No Python? Prebuilt AppImage, `.app` and `.exe` live on the
+[latest release](https://github.com/SpotlightOn/xiaozhi-talk/releases) page.
 
 ## First start
 
@@ -293,3 +308,7 @@ the client does on stderr.
   setting is off in *Settings → Play voice replies*. Text replies still work.
 - **Wrong account connects at startup** — pick another one in
   *Settings → Account* and it becomes the default.
+
+## License
+
+MIT, see [LICENSE](LICENSE). Copyright (c) 2026 SpotlightOn.

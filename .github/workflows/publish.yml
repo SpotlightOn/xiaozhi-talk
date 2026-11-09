@@ -1,0 +1,42 @@
+# Build and publish the package to PyPI.
+#
+# Authenticates with a PyPI API token stored in the repository secret
+# PYPI_API_TOKEN (create one at https://pypi.org/manage/account/token/; use the
+# "Entire account" scope for the very first upload of a new project).
+#
+# Once the project exists you can switch to PyPI Trusted Publishing (OIDC) and
+# drop the secret - see https://docs.pypi.org/trusted-publishers/.
+#
+# Publishing runs on every tag push (v*) or manually via "Run workflow".
+
+name: Publish
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pypi:
+    name: Build and publish to PyPI
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/xiaozhi-talk
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Build sdist and wheel
+        run: |
+          python -m pip install --upgrade build
+          python -m build
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
