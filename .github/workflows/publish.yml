@@ -1,7 +1,7 @@
 # Build and publish the package to PyPI.
 #
 # Authenticates with a PyPI API token stored in the repository secret
-# PYPI_API_TOKEN (create one at https://pypi.org/manage/account/token/; use the
+# PYPI_TOKEN (create one at https://pypi.org/manage/account/token/; use the
 # "Entire account" scope for the very first upload of a new project).
 #
 # Once the project exists you can switch to PyPI Trusted Publishing (OIDC) and
@@ -39,4 +39,4 @@ jobs:
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
+          password: ${{ secrets.PYPI_TOKEN }}
