@@ -48,3 +48,31 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           use_oidc: true
+
+  macos:
+    name: Tests (macOS)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      # xiaozhi-sdk encodes and decodes Opus through opuslib, which loads
+      # libopus with ctypes while the module is imported. Homebrew's prefix is
+      # not on the default linker path of an arm64 runner, hence the paths.
+      - name: Install system libraries
+        run: brew install opus
+
+      - name: Install dependencies
+        run: uv sync --extra dev
+
+      - name: Tests (pytest)
+        run: uv run pytest -q
+        env:
+          QT_QPA_PLATFORM: offscreen
+          DYLD_LIBRARY_PATH: /opt/homebrew/lib
+          LD_LIBRARY_PATH: /opt/homebrew/lib
+          LIBRARY_PATH: /opt/homebrew/lib
