@@ -2987,7 +2987,7 @@ wheels = [
 
 [[package]]
 name = "xiaozhi-talk"
-version = "0.1.0"
+version = "1.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "cryptography" },
@@ -3004,7 +3004,7 @@ dev = [
 ]
 keyring = [
     { name = "keyring" },
-    { name = "secretstorage" },
+    { name = "secretstorage", marker = "sys_platform == 'linux'" },
 ]
 
 [package.metadata]
@@ -3016,7 +3016,7 @@ requires-dist = [
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=5" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.5" },
-    { name = "secretstorage", marker = "extra == 'keyring'", specifier = ">=3.3" },
+    { name = "secretstorage", marker = "sys_platform == 'linux' and extra == 'keyring'", specifier = ">=3.3" },
     { name = "xiaozhi-sdk", specifier = ">=0.5.1" },
 ]
 provides-extras = ["keyring", "dev"]

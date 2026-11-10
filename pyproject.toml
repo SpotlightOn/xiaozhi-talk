@@ -40,8 +40,10 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# Enables the operating system keyring as credential storage.
-keyring = ["keyring>=24", "secretstorage>=3.3"]
+# Enables the operating system keyring as credential storage. secretstorage is
+# the Secret Service bridge and only exists on Linux; Windows and macOS keyring
+# backends ship with keyring itself.
+keyring = ["keyring>=24", "secretstorage>=3.3; sys_platform == 'linux'"]
 dev = ["pytest>=8", "pytest-cov>=5", "ruff>=0.5"]
 
 [project.scripts]
