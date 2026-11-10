@@ -22,7 +22,7 @@ It talks to a Xiaozhi server the same way a Xiaozhi device does, using the
 [`xiaozhi-sdk`](https://pypi.org/project/xiaozhi-sdk/) package, so you can type to
 Xiaozhi from a normal window instead of speaking to a speaker.
 
-![Chat window](docs/screenshot.png)
+![Chat window](docs/screenshot.avif)
 
 ## Features
 
