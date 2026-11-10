@@ -175,7 +175,7 @@ def test_user_message_is_shown_before_it_is_sent(qapp, store, vault) -> None:
 
 def test_shortcut_names_are_english(qapp, store, vault) -> None:
     window = MainWindow(store, vault)
-    shortcut = window._connect_action.shortcut().toString(QKeySequence.NativeText)
+    shortcut = window._connect_action.shortcut().toString(QKeySequence.PortableText)
 
     assert shortcut == "Ctrl+R"
 
@@ -607,7 +607,7 @@ def test_hands_free_records_when_somebody_talks(qapp, store, vault) -> None:
 
 def test_the_voice_shortcut_is_english(qapp, store, vault) -> None:
     window = MainWindow(store, vault)
-    shortcut = window._voice_action.shortcut().toString(QKeySequence.NativeText)
+    shortcut = window._voice_action.shortcut().toString(QKeySequence.PortableText)
 
     assert shortcut == "Ctrl+Shift+Space"
 
